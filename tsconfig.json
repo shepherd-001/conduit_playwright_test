@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",                  // Supports modern async/await and syntax features
+    "module": "commonjs",                // Playwright tests typically execute via CommonJS modules
+    "moduleResolution": "Node",  
+    "sourceMap": true,
+    "outDir": "../tests-out",        // Ensures correct node modules are resolved
+    "strict": true,                      // Activates robust type safety checks
+    "esModuleInterop": true,             // Enables seamless JS/TS module imports
+    "skipLibCheck": true,                // Speeds up compilation by skipping external library type checks
+    "baseUrl": ".",                      // Base directory for resolving non-relative modules
+    "paths": {                           // Optional: Allows clean path aliases (e.g., @pages/login)
+      "@pages/*": ["src/pages/*"]
+    }
+  },
+  "include": ["tests/**/*", "src/**/*"]  // Tells TypeScript which folders to watch
+}
