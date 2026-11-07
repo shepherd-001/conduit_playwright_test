@@ -4,7 +4,7 @@ export class SignupPage extends BasePage {
   private readonly usernameInput = this.page.getByRole('textbox', { name: 'Username' })
   private readonly emailInput =  this.page.getByRole('textbox', { name: 'Email' })
   private readonly passwordInput = this.page.getByPlaceholder('Password', { exact: true })
-  private readonly signupButton = this.page.getByRole('button', { name: 'Sign up', exact: true })
+  readonly signupButton = this.page.getByRole('button', { name: 'Sign up', exact: true })
 
 
   // async goto(path: string = "/register"): Promise<void> {
