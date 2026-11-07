@@ -80,4 +80,31 @@ test.describe('Signup - email address validation', () => {
     await expect(page.getByText('email is invalid')).toBeVisible();
     await expect(page).not.toHaveURL('/');
   })
+  
+  test('Should reject email address with only domain name', async ({page})=>{
+    const signupPage = new SignupPage(page);
+    await signupPage.goto();
+    await signupPage.signup('robo', 'gmail.com', 'Password123$');
+    
+    await expect(page.getByText('email is invalid')).toBeVisible();
+    await expect(page).not.toHaveURL('/');
+  })
+  
+  test('Should reject email address with consecutive @ symbols', async ({page})=>{
+    const signupPage = new SignupPage(page);
+    await signupPage.goto();
+    await signupPage.signup('robo', 'robin@@gmail.com', 'Password123$');
+    
+    await expect(page.getByText('email is invalid')).toBeVisible();
+    await expect(page).not.toHaveURL('/');
+  })
+  
+  test('Should reject email address with consecutive . symbols', async ({page})=>{
+    const signupPage = new SignupPage(page);
+    await signupPage.goto();
+    await signupPage.signup('robo', 'robin@gmail..com', 'Password123$');
+    
+    await expect(page.getByText('email is invalid')).toBeVisible();
+    await expect(page).not.toHaveURL('/');
+  })
 })
